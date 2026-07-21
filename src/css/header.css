@@ -1,44 +1,309 @@
-.header {
-  padding: 20px 0;
+/* =========================================
+   CSS DEĞİŞKENLERİ (Tema & Renk Yönetimi)
+========================================= */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --primary-color: #4f2ee8; /* Figma Moru */
+  --header-border: #111111;
+  --nav-bg: #eac645; /* Figma Sarı */
+  --font-family: 'DM Sans', sans-serif;
 }
-.nav {
+
+/* Dark Mode Değişkenleri */
+body.dark-mode {
+  --bg-color: #111111;
+  --text-color: #ffffff;
+  --header-border: #ffffff;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+}
+
+/* =========================================
+   GENEL HEADER YAPISI
+========================================= */
+.main-header {
+  background-color: var(--bg-color);
+  border-bottom: 2px solid var(--header-border);
+  padding: 0 24px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.header-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
 }
-.nav-logo {
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Sağ Blok (Nav, Tema, Profil) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* =========================================
+   MASAÜSTÜ NAVİGASYON
+========================================= */
+.nav-menu {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 36px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+}
+
+.nav-link.active {
+  background-color: var(--nav-bg);
+  color: #111111;
+}
+
+/* =========================================
+   SVG İKONLARI YÖNETİMİ (IcoMoon)
+========================================= */
+.icon-wrapper {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-.nav-list {
+
+.icon-wrapper svg {
+  transition: color 0.3s ease, fill 0.3s ease;
+  fill: currentColor; /* İkon rengi otomatik olarak metin rengini alır */
+}
+
+/* Logonun Figma Morunu koruma */
+.logo-icon svg {
+  fill: var(--primary-color);
+}
+
+/* Aktif veya hover durumundaki linkin ikon rengi siyah olur */
+.nav-link:hover,
+.nav-link.active {
+  color: #111111; 
+}
+
+/* =========================================
+   TEMA ANAHTARI (Switch)
+========================================= */
+.theme-switch-wrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 40px;
 }
-.nav-link {
+
+.theme-switch {
   position: relative;
-  display: block;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: 200ms ease-in;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
 }
-.nav-link:hover,
-.nav-link:focus {
-  color: #747bff;
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
-.nav-link::after {
-  content: '';
+
+.slider {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  width: 110%;
-  height: 4px;
-  border-radius: 4px;
-  transform-origin: center;
-  animation: stretch 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 200ms both;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #E5E5E5;
+  transition: 0.4s;
+  border-radius: 34px;
 }
-.nav-link.active::after {
-  background: #747bff;
+
+body.dark-mode .slider {
+  background-color: var(--primary-color);
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* =========================================
+   KULLANICI ALANI (Sign Up & Dropdown)
+========================================= */
+.btn-signup {
+  background-color: var(--primary-color);
+  color: #FFF;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 36px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-family);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+.btn-signup:hover {
+  background-color: #3b23b3;
+}
+
+/* Dropdown Kapsayıcı */
+.user-dropdown-wrapper {
+  position: relative;
+}
+
+.user-profile {
+  background-color: var(--primary-color);
+  color: #FFF;
+  border: none;
+  padding: 4px 12px 4px 4px;
+  border-radius: 36px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+/* Log out menüsü */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background-color: var(--bg-color);
+  border: 2px solid var(--header-border);
+  border-radius: 12px;
+  padding: 8px;
+  display: none; /* Varsayılan kapalı */
+  min-width: 150px;
+  z-index: 100;
+}
+
+.dropdown-menu.show {
+  display: block; /* JS ile .show class'ı eklendiğinde görünür */
+}
+
+.btn-logout {
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-family: var(--font-family);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-logout:hover {
+  color: var(--primary-color);
+}
+
+/* GENEL GİZLEME SINIFI (JS İÇİN ŞART) */
+.hidden {
+  display: none !important;
+}
+
+/* =========================================
+   MOBİL MENÜ VE HAMBURGER
+========================================= */
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 0;
+}
+
+.hamburger-btn svg {
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+/* Mobil Tam Ekran Menü Arka Planı (Şimdilik İskelet) */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 74px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 74px);
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.mobile-menu-overlay.open {
+  transform: translateX(0);
+}
+
+/* =========================================
+   RESPONSIVE KURALLARI (Medya Sorguları)
+========================================= */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+  .btn-signup, .user-dropdown-wrapper {
+    display: none; /* Mobilde butonlar genelde açılır menünün içine taşınır */
+  }
+  .hamburger-btn {
+    display: flex;
+  }
 }

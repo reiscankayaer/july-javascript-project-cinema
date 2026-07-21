@@ -1,11 +1,11 @@
 {
-  "name": "july-javascript-project-book",
+  "name": "july-javascript-project-cinema",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/july-javascript-project-book/",
+    "build": "vite build --base=/july-javascript-project-cinema/",
     "preview": "vite preview"
   },
   "devDependencies": {
