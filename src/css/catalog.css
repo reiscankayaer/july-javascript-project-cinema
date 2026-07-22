@@ -1,0 +1,106 @@
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Elemanların birbirinden ayrı durması için boşluk */
+  max-width: 700px;
+  margin: 0 auto;
+  background: none; /* Dış ana arka planı kaldırdık */
+  box-shadow: none;
+}
+
+/* Ortak Kutu Özellikleri (Giriş ve Yıl Alanı İçin) */
+.search-form__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(89, 89, 89, 1); /* İstediğiniz border rengi */
+  border-radius: 24px; /* Şık ve yuvarlak hatlar */
+  padding: 4px 12px;
+  height: 48px; /* Yükseklikleri eşitlemek için */
+  box-sizing: border-box;
+}
+
+/* Giriş Kutusu Esnekliği */
+.search-form__box--input {
+  flex: 2; /* Arama çubuğunun daha geniş durması için */
+}
+
+/* Yıl Kutusu Esnekliği ve Başlangıçta Gizli Olması */
+.search-form__box--year {
+  flex: 1;
+  min-width: 120px;
+  display: none; /* JavaScript veri girene kadar gizli tutacak */
+}
+
+/* Temiz sınıflarla görünür yapma */
+.search-form__box.is-visible {
+  display: flex !important;
+}
+
+/* Giriş Elemanının Kendisi */
+.search-form__input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: #111111;
+  padding-right: 25px;
+}
+
+/* Çarpı Temizleme Butonu */
+.search-form__clear-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #8c8c8c;
+  cursor: pointer;
+  display: none;
+  padding: 4px;
+}
+
+/* Özel Select Tetikleyicisi */
+.custom-select {
+  width: 100%;
+}
+
+.custom-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #595959;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+/* Gradient Arama Butonu */
+.search-form__submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #ffffff;
+  flex-shrink: 0; /* Boyutunun bozulmaması için */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 194, 38, 1) 0%,
+    rgba(248, 65, 25, 1) 100%
+  );
+  box-shadow: 0 4px 10px rgba(248, 65, 25, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.search-form__submit-btn:hover {
+  transform: scale(1.05);
+}
