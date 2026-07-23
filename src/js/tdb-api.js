@@ -1,14 +1,12 @@
 import axios from 'axios';
 
 export const tmdbApi = axios.create({
-  baseURL: 'https://themoviedb.org',
-  headers: {
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxN2RmNTgwZTI0ZjE0MTVmMWUzMDAxMmVhNWEzODk0MSIsIm5iZiI6MTc4Mzk3MzA0OC45OTQsInN1YiI6IjZhNTU0NGI4NjE1M2E0NjUyN2VjNzFlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NWvp2Pe7LEnY85l2i7Ae2_YkQJldidrEdOijplnMF5A',
-    accept: 'application/json',
-  },
-
+  baseURL: 'https://api.themoviedb.org/3',
+  // headers kısmındaki o uzun şifreyi (Bearer) SİLDİK!
+  
   params: {
+    // Şifreyi güvenli bir şekilde .env dosyasından çekiyoruz
+    api_key: import.meta.env.VITE_TMDB_KEY, 
     language: 'en-US',
   },
 });
