@@ -1,0 +1,35 @@
+<section class="library-section">
+    <div class="library-controls">
+        <div class="genre-select">
+            <button class="genre-btn" id="genreBtn" type="button">
+                <span id="genreText">Genre</span>
+                <svg class="arrow" width="16" height="16" aria-hidden="true">
+                    <use href="./icons.svg#icon-chevron-down"></use>
+                </svg>
+            </button>
+
+            <ul class="genre-menu" id="genreMenu"></ul>
+        </div>
+    </div>
+
+    <div class="library-loader hidden">
+        <span>Loading movies...</span>
+    </div>
+
+    <div class="library-error hidden">
+        <p>Movies could not be loaded. Please try again.</p>
+    </div>
+
+    <ul class="library-list"></ul>
+
+    <button class="load-more-btn hidden">Load More</button>
+
+    <div class="library-empty hidden">
+        <p>
+            OOPS... <br />We are very sorry!<br />You don’t have any movies at your
+            library.
+        </p>
+
+        <a class="library-search-btn" href="./page-2.html">Search movie</a>
+    </div>
+</section>
