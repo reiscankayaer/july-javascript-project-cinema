@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const tmdbApi = axios.create({
-  baseURL: 'https://themoviedb.org',
+  baseURL: 'https://api.themoviedb.org/3',
   headers: {
     Authorization:
       'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxN2RmNTgwZTI0ZjE0MTVmMWUzMDAxMmVhNWEzODk0MSIsIm5iZiI6MTc4Mzk3MzA0OC45OTQsInN1YiI6IjZhNTU0NGI4NjE1M2E0NjUyN2VjNzFlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NWvp2Pe7LEnY85l2i7Ae2_YkQJldidrEdOijplnMF5A',
@@ -79,4 +79,24 @@ export const getMovieVideos = async movieId => {
 export const getMovieTypeList = async () => {
   const response = await tmdbApi.get('/genre/movie/list');
   return response.data.genres; // TMDB tür listesini 'genres' içinde yollar
+};
+
+// api.js dosyanızın içindeki arama fonksiyonu tam olarak böyle olmalı:
+export const searchMoviesApi = async (query, year) => {
+  const aramaParametreleri = {
+    query: query,
+    language: 'en-US',
+  };
+
+  if (year && year !== 'Year') {
+    aramaParametreleri.primary_release_year = year;
+  }
+
+  // ÖNEMLİ: Adresin başında MUTLAKA "/" (eğik çizgi) olmalı!
+  // Böylece baseURL olan 'https://themoviedb.org' ile birleşir.
+  const response = await tmdbApi.get('/search/movie', {
+    params: aramaParametreleri,
+  });
+
+  return response.data.results;
 };
