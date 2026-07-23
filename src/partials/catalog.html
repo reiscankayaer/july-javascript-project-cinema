@@ -14,7 +14,7 @@
         <div class="container">
           <div class="catalog__wrapper">
             <form class="search-form" id="searchForm" autocomplete="off">
-              <!-- 1. Kutu: Arama Input Alanı -->
+              <!-- Arama Input Alanı -->
               <div class="search-form__box search-form__box--input">
                 <input
                   type="text"
@@ -33,7 +33,7 @@
                 </button>
               </div>
 
-              <!-- 2. Kutu: Yıl Seçim Alanı (Başlangıçta gizli) -->
+              <!-- Yıl Seçim Çarkı -->
               <div
                 class="search-form__box search-form__box--year"
                 id="yearSelectWrapper"
@@ -58,12 +58,12 @@
                     </svg>
                   </button>
                   <ul class="custom-select__options hide" id="yearMenu">
-                    <!-- Yıllar buraya gelecek -->
+                    <!-- JavaScript dinamik dolduracak -->
                   </ul>
                 </div>
               </div>
 
-              <!-- 3. Kutu: Gönder Butonu -->
+              <!-- Gönder Butonu -->
               <button
                 type="submit"
                 class="search-form__submit-btn"
@@ -85,6 +85,8 @@
               </button>
             </form>
           </div>
+
+          <div class="catalog-movies-list"></div>
         </div>
       </section>
     </main>
